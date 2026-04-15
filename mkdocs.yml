@@ -1,0 +1,50 @@
+site_name: Corso Next.js + FastAPI
+site_description: Corso pratico di sviluppo web — da zero a una mini-app RAG
+site_author: Simone Rossi & Leonardo Bianchi
+repo_url: https://github.com/mptyl/corso-nextjs
+repo_name: mptyl/corso-nextjs
+
+theme:
+  name: material
+  language: it
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Passa al tema scuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Passa al tema chiaro
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Lezioni:
+    - "0. Setup": lezione-00.md
+    - "1. Backend FastAPI": lezione-01.md
+    - "2. Frontend Next.js": lezione-02.md
+    - "3. Frontend ↔ Backend": lezione-03.md
+    - "4. RAG su file di testo": lezione-04.md
+    - "5. Chat UI": lezione-05.md
+    - "6. Deploy": lezione-06.md
+    - "7. Riepilogo": lezione-07.md
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - tables
+  - attr_list
+  - md_in_html
