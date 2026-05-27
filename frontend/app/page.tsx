@@ -1,17 +1,21 @@
-import HealthStatus from "./components/HealthStatus";
+import { ChatProvider } from "./contexts/ChatContext";
+import ChatComponent from "./components/ChatComponent";
 import DocumentList from "./components/DocumentList";
-import SearchBar from "./components/SearchBar";
+import HealthStatus from "./components/HealthStatus";
 
 export default function Home() {
   return (
-    <main className="p-8">
-      <h1 className="mb-6 text-3xl font-bold">RistoranteAI</h1>
-      <HealthStatus />
-      <DocumentList />
-      <hr className="my-8" />
-      <h2 className="mb-4 text-2xl font-semibold">Cerca nei documenti</h2>
-      <SearchBar />
-    </main>
+    <ChatProvider>
+      <main className="mx-auto max-w-3xl p-8">
+        <h1 className="mb-6 text-3xl font-bold">RistoranteAI</h1>
+        <div className="mb-6 flex gap-4">
+          <HealthStatus />
+          <DocumentList />
+        </div>
+        <ChatComponent />
+      </main>
+    </ChatProvider>
   );
 }
+
 
