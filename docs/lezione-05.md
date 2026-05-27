@@ -103,7 +103,18 @@ export function ChatProvider({ children }: { children: ReactNode }) {
     try {
       const res = await fetch("http://localhost:8000/api/query?q=" + encodeURIComponent(text));
       const data = await res.json();
-      const botMsg: Message = { role: "assistant", content: data.answer };
+      
+      // Formattiamo i risultati della ricerca in un testo leggibile
+      let answer = "";
+      if (data.results && data.results.length > 0) {
+        answer = data.results
+          .map((r: any) => `**Da ${r.file}**:\n${r.text}`)
+          .join("\n\n");
+      } else {
+        answer = `Nessun risultato trovato nei documenti del ristorante per "${text}".`;
+      }
+
+      const botMsg: Message = { role: "assistant", content: answer };
       setMessages((prev) => [...prev, botMsg]);
     } catch {
       const errMsg: Message = { role: "assistant", content: "Errore: impossibile contattare il backend." };
@@ -182,7 +193,7 @@ export default function ChatComponent() {
         )}
         {messages.map((msg, i) => (
           <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-            <div className={`max-w-[75%] rounded-lg px-4 py-2 ${
+            <div className={`max-w-[75%] rounded-lg px-4 py-2 whitespace-pre-line ${
               msg.role === "user"
                 ? "bg-blue-600 text-white"
                 : "bg-gray-100 text-gray-800"

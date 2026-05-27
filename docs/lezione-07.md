@@ -94,13 +94,13 @@ Quello che avete imparato qui è reale — sono le stesse tecnologie usate nel m
 
 In 7 lezioni avete imparato a:
 
-0. **Setup** — Creare il progetto, capire l'architettura
-1. **Next.js** — Componenti, props, useState, layout
-2. **Backend** — FastAPI, rotte, ricerca testuale
-3. **Collegamento** — fetch, CORS, mostrare dati reali
-4. **Stile** — Tailwind CSS, responsive design
-5. **Chat** — Interfaccia conversazionale, storia messaggi
-6. **Deploy** — Vercel + Railway, dall' locale al mondo
-7. **Riepilogo** — Da RistoranteAI a AthenaAI
+0. **Setup** — Ambiente e struttura del progetto
+1. **Backend** — FastAPI e le prime API
+2. **Frontend** — Next.js, React e Tailwind
+3. **Collegare Frontend e Backend** — CORS, fetch e dati a schermo
+4. **RAG** — Ricerca testuale all'interno dei documenti
+5. **Interfaccia Chat** — React context e layout conversazionale
+6. **Deploy** — Compilazione statica e server unificato
+7. **Riepilogo** — Collegamento tra RistoranteAI e AthenaAI
 
 Ora sapete dove mettere le mani. Buon lavoro.

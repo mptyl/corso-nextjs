@@ -30,25 +30,23 @@ Perché FastAPI e non Django o Flask?
 
 ---
 
-## 1.2 Creare la struttura del progetto
+## 1.2 La struttura del progetto
 
-Nella Lezione 0 avete creato la cartella `~/progetti/RistoranteAI`. Ora aggiungiamo il backend.
+Nella Lezione 0 avete già creato la cartella principale `~/progetti/RistoranteAI` e le relative sottocartelle. Prima di procedere, assicuriamoci di posizionarci nella cartella del progetto:
 
 ```bash
 cd ~/progetti/RistoranteAI
-mkdir -p backend/app
-mkdir -p data
 ```
 
-La struttura sarà:
+La struttura che abbiamo impostato e che andremo ad arricchire in questa lezione è la seguente:
 
 ```
 RistoranteAI/
 ├── backend/
 │   ├── app/
-│   │   └── main.py      ← il cuore del backend
-│   └── requirements.txt  ← le dipendenze Python
-└── data/                 ← i file di testo del ristorante
+│   │   └── main.py      ← il cuore del backend (lo creeremo tra poco)
+│   └── requirements.txt  ← le dipendenze Python (le creeremo tra poco)
+└── data/                 ← i file di testo del ristorante (già creati nella Lezione 0)
 ```
 
 ---
@@ -193,40 +191,14 @@ Questa documentazione si aggiorna automaticamente ogni volta che aggiungi o modi
 
 ---
 
-## 1.8 Aggiungere i dati del ristorante
+## 1.8 I documenti del ristorante (creati nella Lezione 0)
 
-Ora creiamo i file di testo che il backend leggerà. In Antigravity: crea il file `data/menu.md`:
+I file di testo su cui il nostro sistema effettuerà le ricerche sono stati già creati e salvati nella cartella `data/` durante la **Lezione 0**:
+- `data/menu.md` (il menu completo del ristorante Da Luigi)
+- `data/ricette.md` (le ricette dettagliate con ingredienti e procedimenti)
+- `data/allergeni.md` (l'elenco degli allergeni per ciascun piatto)
 
-```markdown
-# Menu del Giorno
-
-## Primi
-- Pasta Carbonara
-- Risotto ai Funghi
-
-## Secondi
-- Cotoletta alla Milanese
-- Pesce Spada alla Griglia
-
-## Dolci
-- Tiramisù
-- Panna Cotta
-```
-
-E il file `data/allergeni.md`:
-
-```markdown
-# Allergeni
-
-## Pasta Carbonara
-Uova, Glutine, Lattosio
-
-## Tiramisù
-Uova, Glutine, Lattosio
-
-## Panna Cotta
-Lattosio
-```
+Non dobbiamo crearli né modificarli! Utilizzeremo direttamente questi documenti ricchi di informazioni, che abbiamo già inizializzato e committato su Git. Saranno proprio questi file a venire letti ed elaborati dal nostro backend FastAPI nei passaggi successivi.
 
 ---
 
@@ -275,7 +247,7 @@ curl http://localhost:8000/api/documents
 Risposta:
 
 ```json
-{"documents":["allergeni.md","menu.md"]}
+{"documents":["allergeni.md","menu.md","ricette.md"]}
 ```
 
 Il backend legge dal filesystem e restituisce la lista dei documenti disponibili.
@@ -310,7 +282,7 @@ La parola chiave `async` rende la funzione **asincrona**: Python può gestire al
 JSON è il formato con cui il backend comunica. È un modo semplice per rappresentare dati come testo:
 
 ```json
-{"status": "ok", "documents": ["menu.md", "allergeni.md"]}
+{"status": "ok", "documents": ["allergeni.md", "menu.md", "ricette.md"]}
 ```
 
 In Python, un dizionario `{"chiave": "valore"}` diventa automaticamente un oggetto JSON nella risposta.

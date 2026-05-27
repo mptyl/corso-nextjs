@@ -216,7 +216,7 @@ Aggiungi questo a `backend/app/main.py`:
 ```python
 import os
 
-DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
+DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "..", "data")
 
 
 @app.get("/api/documents")
