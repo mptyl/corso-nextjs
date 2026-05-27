@@ -1,10 +1,10 @@
 import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.services.search import search_documents
 
 app = FastAPI(title="RistoranteAI")
 
-# Configurazione CORS (Next.js su porta 3000)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000"],
@@ -29,3 +29,10 @@ async def list_documents():
         if f.endswith(".md")
     ]
     return {"documents": documents}
+
+
+@app.get("/api/query")
+async def search(q: str):
+    results = search_documents(q)
+    return {"query": q, "results": results}
+
